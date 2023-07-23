@@ -56,6 +56,25 @@ function handleSubmitName(name) {
   namesRef.push(name); // This will automatically generate a sequential key for the name and store it as part of the names array.
 }
 
+function clearNamesDatabase() {
+  const namesRef = firebase.database().ref('names');
+  const result = firebase.database().ref('result');
+  result.remove()
+    .then(() => {
+      console.log('Names database cleared successfully.');
+    })
+    .catch((error) => {
+      console.error('Error clearing names database:', error);
+    });
+  namesRef.remove()
+    .then(() => {
+      console.log('Names database cleared successfully.');
+    })
+    .catch((error) => {
+      console.error('Error clearing names database:', error);
+    });
+}
+
 function handleSpinWheel() {
   const namesRef = firebase.database().ref('names');
   namesRef.once('value', (snapshot) => {
@@ -74,4 +93,6 @@ function handleSpinWheel() {
       console.log('Names data is not an object or is empty.');
     }
   });
+
+  
 }
