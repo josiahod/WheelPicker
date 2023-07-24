@@ -98,9 +98,6 @@ function handleSpinWheel() {
           console.log("Flashing");
           startFlashing();
           setTimeout(stopFlashing, 3000); // Adjust the time (in milliseconds) for the slowdown
-
-        console.log('Random Name:', randomName);
-        firebase.database().ref('result').set(randomName);
       } else {
         console.log('No names found or the names array is empty.');
       }
@@ -111,8 +108,6 @@ function handleSpinWheel() {
 }
 
 //move logic
-// Array of names to display
-const names = ['Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank'];
 
 let flashingInterval;
 let currentIndex = 0;
