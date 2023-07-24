@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    margin-top: 50px;
+  }
+
+
+  .container {
+    font-size: 30px;
+    padding: 10px;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  
+  .glow-text {
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff; /* Initial text color */
+    text-shadow: 0 0 10px #00c3ff, /* The glow effect color and size */
+                 0 0 20px #00c3ff,
+                 0 0 30px #00c3ff;
+    animation: glowing 2s ease-in-out infinite; /* The animation properties */
+  }
+  
+  @keyframes glowing {
+    0% {
+      text-shadow: 0 0 10px #00c3ff,
+                   0 0 20px #00c3ff,
+                   0 0 30px #00c3ff;
+    }
+    50% {
+      text-shadow: 0 0 20px #00c3ff,
+                   0 0 30px #00c3ff,
+                   0 0 40px #00c3ff;
+    }
+    100% {
+      text-shadow: 0 0 10px #00c3ff,
+                   0 0 20px #00c3ff,
+                   0 0 30px #00c3ff;
+    }
+  }
+
+  ul {
+    list-style-position: inside; /* Move the bullets inside the list item */
+    padding-left: 0; /* Remove the default padding of the ul */
+  }
+  
+  li {
+    list-style: disc; /* Set the style of the bullets (disc, circle, square, etc.) */
+    margin: 10px 0; /* Add some space between list items (optional) */
+  }
+  

@@ -2,27 +2,32 @@
 <html>
 <head>
   <title>Name Picking Wheel</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <center> 
   <h1>Name Picking Wheel</h1>
- <div id="Production" style="display:none";> 
+  
+ <div id="Production" style="display:block";> 
     <div>
-        <input type="text" id="nameInput" placeholder="Enter your name" />
+        <input type="text" id="nameInput" placeholder="Enter a name" style="height: 50px;"/>
         <button onclick="submitName()">Submit Name</button>
     </div>
-    <div>
         <button onclick="clearNamesDatabase()">Clear Names</button>
-      </div>
-    <div>
-        <button onclick="handleSpinWheel()">Spin the Wheel</button>
-    </div>
+        <button id="startButton" onclick="handleSpinWheel()">Spin the Wheel</button>
+    <button onclick="production()">Control Panel</button>
 </div>
+    <div class="container" id="nameContainer">
+        <h2 id="nameDisplay" class="glow-text"></h2>
+      </div>
+</div>
+
   <div>
     <p>Names:</p>
     <ul id="namesList"></ul>
   </div>
   <p id="result"></p>
-  <button onclick="production()">Control Panel</button>
+</center>
 
   <!-- Include the Firebase JavaScript SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
