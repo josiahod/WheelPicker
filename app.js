@@ -108,6 +108,8 @@ function handleSpinWheel() {
 }
 
 //move logic
+// Array of names to display
+const names = ['Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank'];
 
 let flashingInterval;
 let currentIndex = 0;
