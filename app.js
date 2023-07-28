@@ -21,11 +21,12 @@ const check = firebase.database().ref("blank");
   check.once("value")
   .then((snapshot) => {
     const dbVal = snapshot.val();
-    while (val != dbVal)
     var val = prompt("Enter Passcode");
   
     if(val == dbVal)
     document.getElementById("Production").style.display = "block";
+    else
+    alert("Wrong Password");
   })
   .catch((error) => {
     console.error("Error", error);
