@@ -14,13 +14,15 @@
         <button onclick="submitName()">Submit Name</button>
     </div>
         <button onclick="clearNamesDatabase()">Clear Names</button>
-        <button id="startButton">Spin the Wheel</button>
+        <button id="startButton" onclick="handleSpinWheel()">Spin the Wheel</button>
         <br/>
         <button onclick="LoadEpisodeButton()">Episode Button</button>
         <select id="episodeSelect" style="width:150px";> </select>
         <br/>
         <label for="slider">Speed:</label>
         <input type="range" id="slider" min="0" max="10000" step="1000" value="0" onchange="updateSliderValue()">
+        <br/>
+        
 </div>
     <div class="container" id="nameContainer">
         <h2 id="nameDisplay" class="glow-text" style="display:none"></h2>

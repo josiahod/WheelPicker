@@ -38,7 +38,13 @@ const resultElement = document.getElementById("result");
 firebase.database().ref('names').on('value', (snapshot) => {
   const namesObject = snapshot.val();
   if (namesObject && typeof namesObject === 'object') {
-    console.log("ran");
+
+    const firstKey = Object.keys(namesObject)[0];
+    const firstValue = namesObject[firstKey];
+    if (firstValue === "The National Anthem") {
+      document.getElementById("namesList").style.display = "none";
+      console.log("hidden episodes");
+    } 
     const namesArray = Object.values(namesObject);
     const namesHTML = namesArray.map((name) => `<li>${name}</li>`).join('');
     namesList.innerHTML = namesHTML;
@@ -55,6 +61,11 @@ firebase.database().ref('names').on('value', (snapshot) => {
 firebase.database().ref('random').on('value', (snapshot) => {
   const random = snapshot.val();
   resultElement.textContent = random ? `${random}` : '';
+});
+
+firebase.database().ref('showNames').on('value', (snapshot) => {
+  const random = snapshot.val();
+  console.log(random);
 });
 
 function submitName() {
@@ -181,6 +192,7 @@ function stopFlashing() {
 
   function LoadEpisodeButton() 
   {
+    firebase.database().ref('showNames').set("false");
     rigged = true;
     var speed = parseInt(document.getElementById('slider').value);
     document.getElementById("namesList").style.display = "none";
