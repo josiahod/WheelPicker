@@ -182,10 +182,17 @@ function startFlashing() {
 function stopFlashing() {
   clearInterval(flashingInterval);
   isFlashing = false;
-  const nameDisplay = document.getElementById('nameDisplay');
+  const nameDisplay = document.getElementById('result');
   firebase.database().ref('result').set(nameDisplay.textContent);
    console.log(nameDisplay.textContent);
-   if(rigged) document.getElementById('result').textContent = selectElement.value;
+   if(rigged) 
+   {
+    console.log("ran rigged");
+    document.getElementById('result').textContent = selectElement.value;
+    firebase.database().ref('random').set(nameDisplay.textContent);
+    firebase.database().ref('result').set(nameDisplay.textContent);
+   }
+
    rigged = false;
 
 }
