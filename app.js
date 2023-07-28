@@ -47,9 +47,14 @@ firebase.database().ref('names').on('value', (snapshot) => {
   }
 });
 
-firebase.database().ref('result').on('value', (snapshot) => {
+/* firebase.database().ref('result').on('value', (snapshot) => {
   const result = snapshot.val();
   resultElement.textContent = result ? `Result: ${result}` : '';
+}); */
+
+firebase.database().ref('random').on('value', (snapshot) => {
+  const random = snapshot.val();
+  resultElement.textContent = random ? `${random}` : '';
 });
 
 function submitName() {
@@ -131,6 +136,7 @@ function flashNames() {
         }
         const nameDisplay = document.getElementById('nameDisplay');
         nameDisplay.textContent = namesArray[currentIndex];
+        firebase.database().ref('random').set(nameDisplay.textContent);
         currentIndex++;
       } else {
         console.log('No names found or the names array is empty.');
