@@ -97,7 +97,9 @@ function handleSpinWheel() {
         const randomName = namesArray[randomIndex];
           console.log("Flashing");
           startFlashing();
-          setTimeout(stopFlashing, 3000); // Adjust the time (in milliseconds) for the slowdown
+          var randTime = Math.floor(Math.random() * (4000 - 3000 + 1)) + 3000;
+          console.log(randTime);
+          setTimeout(stopFlashing, randTime); // Adjust the time (in milliseconds) for the slowdown
       } else {
         console.log('No names found or the names array is empty.');
       }
@@ -127,7 +129,6 @@ function flashNames() {
         if (currentIndex >= namesArray.length) {
           currentIndex = 0;
         }
-
         const nameDisplay = document.getElementById('nameDisplay');
         nameDisplay.textContent = namesArray[currentIndex];
         currentIndex++;
@@ -154,15 +155,9 @@ function startFlashing() {
 function stopFlashing() {
   clearInterval(flashingInterval);
   isFlashing = false;
-
-  // Pick a random name from the array
-  const randomIndex = Math.floor(Math.random() * names.length);
-  const randomName = names[randomIndex];
-
   const nameDisplay = document.getElementById('nameDisplay');
-  nameDisplay.textContent = randomName;
-  console.log(`The selected name is: ${randomName}`);
-  firebase.database().ref('result').set(randomName);
+  firebase.database().ref('result').set(nameDisplay.textContent);
+   console.log(nameDisplay.textContent);
 }
 
 
