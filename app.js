@@ -58,6 +58,7 @@ firebase.database().ref('random').on('value', (snapshot) => {
 });
 
 function submitName() {
+  document.getElementById("namesList").style.display = "block";
   const nameInput = document.getElementById("nameInput");
   const name = nameInput.value.trim();
 
@@ -74,6 +75,7 @@ function handleSubmitName(name) {
 
 function clearNamesDatabase() {
   const namesRef = firebase.database().ref('names');
+  const randomName = firebase.database().ref('random');
   const result = firebase.database().ref('result');
   result.remove()
     .then(() => {
@@ -89,9 +91,17 @@ function clearNamesDatabase() {
     .catch((error) => {
       console.error('Error clearing names database:', error);
     });
+    randomName.remove()
+    .then(() => {
+      console.log('Names database cleared successfully.');
+    })
+    .catch((error) => {
+      console.error('Error clearing names database:', error);
+    });
 }
 
 function handleSpinWheel() {
+  var speed = parseInt(document.getElementById('slider').value);
   const namesRef = firebase.database().ref('names');
   namesRef.once('value', (snapshot) => {
     const namesObject = snapshot.val();
@@ -102,7 +112,7 @@ function handleSpinWheel() {
         const randomName = namesArray[randomIndex];
           console.log("Flashing");
           startFlashing();
-          var randTime = Math.floor(Math.random() * (4000 - 3000 + 1)) + 3000;
+          var randTime = (Math.floor(Math.random() * (4000 - 3000 + 1)) + 3000) + speed;
           console.log(randTime);
           setTimeout(stopFlashing, randTime); // Adjust the time (in milliseconds) for the slowdown
       } else {
@@ -164,6 +174,81 @@ function stopFlashing() {
   const nameDisplay = document.getElementById('nameDisplay');
   firebase.database().ref('result').set(nameDisplay.textContent);
    console.log(nameDisplay.textContent);
+   if(rigged) document.getElementById('result').textContent = selectElement.value;
+   rigged = false;
+
 }
 
+  function LoadEpisodeButton() 
+  {
+    rigged = true;
+    var speed = parseInt(document.getElementById('slider').value);
+    document.getElementById("namesList").style.display = "none";
+    clearNamesDatabase();
+    const namesRef = firebase.database().ref('names');
+    for(let i = 0; i < blackMirrorEpisodes.length; i++)
+    {
+    namesRef.push(blackMirrorEpisodes[i]);
+    }
+  namesRef.once('value', (snapshot) => {
+    const namesObject = snapshot.val();
+    if (namesObject && typeof namesObject === 'object') {
+      const namesArray = Object.values(namesObject);
+      if (namesArray.length > 0) {
+        const randomIndex = Math.floor(Math.random() * namesArray.length);
+        const randomName = namesArray[randomIndex];
+          console.log("Flashing");
+          startFlashing();
+          var randTime = (Math.floor(Math.random() * (4000 - 3000 + 1)) + 3000) + speed;
+          console.log(randTime);
+          setTimeout(stopFlashing, randTime); // Adjust the time (in milliseconds) for the slowdown
+      } else {
+        console.log('No names found or the names array is empty.');
+      }
+    } else {
+      console.log('Names data is not an object or is empty.');
+    }
+  });
+  }
 
+  var rigged = false;
+  const blackMirrorEpisodes = [
+    "The National Anthem",
+    "Fifteen Million Merits",
+    "The Entire History of You",
+    "Be Right Back",
+    "White Bear",
+    "The Waldo Moment",
+    "White Christmas",
+    "Nosedive",
+    "Playtest",
+    "Shut Up and Dance",
+    "San Junipero",
+    "Men Against Fire",
+    "Hated in the Nation",
+    "USS Callister",
+    "Arkangel",
+    "Crocodile",
+    "Hang the DJ",
+    "Metalhead",
+    "Black Museum",
+    "Bandersnatch",
+    "Striking Vipers",
+    "Smithereens",
+    "Rachel, Jack and Ashley Too",
+    "Joan is Awful",
+    "Loch Henry",
+    "Beyond the Sea",
+    "Mazey Day",
+    "Demon 79"
+  ];
+
+  const selectElement = document.getElementById('episodeSelect');
+
+  for (let i = 0; i < blackMirrorEpisodes.length; i++) {
+  const episodeTitle = blackMirrorEpisodes[i];
+  const optionElement = document.createElement('option');
+  optionElement.textContent = episodeTitle;
+  selectElement.appendChild(optionElement);
+  }
+    

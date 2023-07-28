@@ -15,7 +15,11 @@
     </div>
         <button onclick="clearNamesDatabase()">Clear Names</button>
         <button id="startButton" onclick="handleSpinWheel()">Spin the Wheel</button>
-    <button onclick="production()">Control Panel</button>
+        <br/>
+        <button onclick="LoadEpisodeButton()">Episode Button</button>
+        <select id="episodeSelect" style="width:150px";> </select>
+        <br/>
+        <input type="range" id="slider" min="0" max="10000" step="1000" value="0" onchange="updateSliderValue()">
 </div>
     <div class="container" id="nameContainer">
         <h2 id="nameDisplay" class="glow-text" style="display:none"></h2>
@@ -27,6 +31,7 @@
     <ul id="namesList"></ul>
   </div>
   <p id="result" class="glow-text"></p>
+  <button onclick="production()">Control Panel</button>
 </center>
 
   <!-- Include the Firebase JavaScript SDK -->
