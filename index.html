@@ -1,45 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Name Picking Wheel</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Episode Shuffle Twist</title>
+  <link rel="stylesheet" href="https://josiahod.github.io/WheelPicker/style.css">
+  <style>
+    /* Stylize the text for the header and episode selection */
+    h1 {
+      font-family: 'Arial', sans-serif;
+      font-size: 36px;
+      color: #00ff00; /* Green color for the glitchy, technological theme */
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0, 255, 0, 0.6);
+    }
+
+    p {
+      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      color: #ff0000; /* Red color for the ominous theme */
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.6);
+    }
+
+    /* Stylize the control panel button */
+    button {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Add additional styling as needed */
+    /* ... */
+
+    /* Hide the Control Panel by default */
+    #Production {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <center> 
-  <h1>Name Picking Wheel</h1>
+  <center>
+    <h1>Episode Shuffle Twist</h1>
+    
+    <p>This is the page that will randomly decide in real-time what episode of Black Mirror the house will be subjected to for the round. May luck be in your favor!</p>
   
- <div id="Production" style="display:block";> 
-    <div>
-        <input type="text" id="nameInput" placeholder="Enter a name" style="height: 50px;"/>
-        <button onclick="submitName()">Submit Name</button>
+    <div id="Production">
+      
+      <button onclick="" style="display:none";>Clear Episode</button>
+      <br/>
+      <button onclick="LoadEpisodeButton()">Shuffle Names</button>
+      <select id="episodeSelect" style="width:150px; display:none;";> </select>
+      <br/>
+      <label for="slider">Speed</label>
+      <input type="range" id="slider" min="0" max="10000" step="1000" value="3000">
     </div>
-        <button onclick="clearNamesDatabase()">Clear Names</button>
-        <button id="startButton" onclick="handleSpinWheel()">Spin the Wheel</button>
-        <br/>
-        <button onclick="LoadEpisodeButton()">Episode Button</button>
-        <select id="episodeSelect" style="width:150px";> </select>
-        <br/>
-        <label for="slider">Speed:</label>
-        <input type="range" id="slider" min="0" max="10000" step="1000" value="0" onchange="updateSliderValue()">
-        <br/>
-        
-</div>
-    <div class="container" id="nameContainer">
-        <h2 id="nameDisplay" class="glow-text" style="display:none"></h2>
-      </div>
-</div>
 
-  <div>
-    <p>Names:</p>
-    <ul id="namesList"></ul>
-  </div>
-  <p id="result" class="glow-text"></p>
-  <button onclick="production()">Control Panel</button>
-</center>
+    <div class="container" id="nameContainer">
+      <h2 id="nameDisplay" class="glow-text" style="display:none";></h2>
+    </div>
+
+    <div>
+      <p>Episode Selected:</p>
+      <ul id="namesList"></ul>
+    </div>
+    <p id="result" class="glow-text"></p>
+    <button onclick="production()">Control Panel</button>
+    <p>Note: The Control Panel is for Host use only.</p>
+  </center>
 
   <!-- Include the Firebase JavaScript SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
-  <script src="app.js"></script> <!-- Your custom JavaScript file -->
+  <script src="app2.js"></script> <!-- Your custom JavaScript file -->
 </body>
 </html>
