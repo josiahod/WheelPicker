@@ -21,16 +21,33 @@ const check = firebase.database().ref("blank");
   check.once("value")
   .then((snapshot) => {
     const dbVal = snapshot.val();
-    while (val != dbVal)
     var val = prompt("Enter Passcode");
   
     if(val == dbVal)
     document.getElementById("Production").style.display = "block";
+    else
+    alert("Wrong Password");
   })
   .catch((error) => {
     console.error("Error", error);
   });
 }
+
+
+
+
+// Set up the listener
+const databaseRef = firebase.database().ref('colorChange');
+databaseRef.on('value', (snapshot) => {
+  const textColor = document.getElementById('result');
+  textColor.style.color = "#fff";
+  const newValue = snapshot.val();
+  console.log(newValue == "true");
+  if (newValue == "true")
+  {
+    textColor.style.color = "red";
+  }
+});
 
 const resultElement = document.getElementById("result");
 
@@ -140,6 +157,7 @@ let isFlashing = false;
 // Function to flash the names one after another
 // app.js
 function flashNames() {
+  firebase.database().ref('colorChange').set("false");
   const namesRef = firebase.database().ref('players');
   namesRef.once('value', (snapshot) => {
     const namesObject = snapshot.val();
@@ -177,6 +195,7 @@ function stopFlashing() {
   clearInterval(flashingInterval);
   isFlashing = false;
   const nameDisplay = document.getElementById('result');
+  firebase.database().ref('colorChange').set("true");
    console.log(nameDisplay.textContent);
    rigged = false;
 
