@@ -24,27 +24,27 @@ body {
     font-size: 48px;
     font-weight: bold;
     color: #fff; /* Initial text color */
-    text-shadow: 0 0 10px #2ec117, /* The glow effect color and size */
-                 0 0 20px #2ec117,
-                 0 0 30px #2ec117;
+    text-shadow: 0 0 10px #DAAF93, /* The glow effect color and size */
+                 0 0 20px #DAAF93,
+                 0 0 30px #DAAF93;
     animation: glowing 2s ease-in-out infinite; /* The animation properties */
   }
   
   @keyframes glowing {
     0% {
-      text-shadow: 0 0 10px #2ec117,
-                   0 0 20px #2ec117,
-                   0 0 30px #2ec117;
+      text-shadow: 0 0 10px #DAAF93,
+                   0 0 20px #DAAF93,
+                   0 0 30px #DAAF93;
     }
     50% {
-      text-shadow: 0 0 20px #2ec117,
-                   0 0 30px #2ec117,
-                   0 0 40px #2ec117;
+      text-shadow: 0 0 20px #DAAF93,
+                   0 0 30px #DAAF93,
+                   0 0 40px #DAAF93;
     }
     100% {
-      text-shadow: 0 0 10px #2ec117,
-                   0 0 20px #2ec117,
-                   0 0 30px #2ec117;
+      text-shadow: 0 0 10px #DAAF93,
+                   0 0 20px #DAAF93,
+                   0 0 30px #DAAF93;
     }
   }
 
