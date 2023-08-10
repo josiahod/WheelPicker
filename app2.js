@@ -197,6 +197,15 @@ function stopFlashing() {
   const nameDisplay = document.getElementById('result');
   firebase.database().ref('colorChange').set("true");
    console.log(nameDisplay.textContent);
+  console.log(characterArray);
+   characterArray = characterArray.filter(function(value) {
+    return value !== nameDisplay.textContent;
+  });
+  console.log(characterArray);
+
+
+
+
    rigged = false;
 
 }
@@ -208,6 +217,7 @@ function stopFlashing() {
     var speed = parseInt(document.getElementById('slider').value);
     clearNamesDatabase();
     const namesRef = firebase.database().ref('players');
+    namesRef.remove();
     for(let i = 0; i < characterArray.length; i++)
     {
     namesRef.push(characterArray[i]);
@@ -235,7 +245,7 @@ function stopFlashing() {
 
   var rigged = false;
 
-  const characterArray = [
+  var characterArray = [
     "Cheryl Blossom",
     "Chica",
     "Edalyn Clawthorne",
