@@ -39,8 +39,10 @@ var fail = function(num,t1,t2,b1,b2,b3,s1,s2,s3){
   });
 };
 
+ const urlParams = new URLSearchParams(window.location.search);
+const dataValue = urlParams.get('dataValue');
 {
-newTile('1','Spy Mission!','<strong>rules:</strong><br>1. click the button with the answer that you think is right<br>2. Try your best to get to the end.<br>3. that\'s pretty much all<br><br>You are a spy sent on a mission. You find yourself outside a secure government facility. Whats your move?','Look for a ventilation duct to sneak into the building.','Approach the main entrance and try to charm your way in.','Hack into the facility\'s security system to gain access.',"scene2","scene3","scene4");
+newTile('1','Welcome Agent ' + dataValue ,'<strong>rules:</strong><br>1. click the button with the answer that you think is right<br>2. Try your best to get to the end.<br>3. that\'s pretty much all<br><br>You are a spy sent on a mission. You find yourself outside a secure government facility. Whats your move?','Look for a ventilation duct to sneak into the building.','Approach the main entrance and try to charm your way in.','Hack into the facility\'s security system to gain access.',"scene2","scene3","scene4");
 
 newTile('2','You Can Continue!','You successfully enter the facility through the ventilation duct. You hear voices coming from two different rooms. What do you do?','Barge into the room on the left without any hesitation.','Eavesdrop on the conversation in the room on the right.','Send in a mini surveillance drone to gather information.','scene5','scene6','scene7');
 
